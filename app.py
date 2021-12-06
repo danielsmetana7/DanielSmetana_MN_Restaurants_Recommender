@@ -25,11 +25,6 @@ pd.DataFrame(mn_restaurant_data)
 
 
 
-print(mn_restaurant_data.head())
-
-print(list(mn_restaurant_data.columns))
-
-
 #isolate cities
 mpls_restaurants = mn_restaurant_data[mn_restaurant_data["Minneapolis"] == "Y"]
 stp_restaurants = mn_restaurant_data[mn_restaurant_data["St. Paul"] == "Y"]
@@ -157,8 +152,13 @@ def master():
                 master_output = requested_data
                 st.write("Below are your results - enjoy!")
                 st.table(master_output)
-            elif bypass_for_random == "Search based on criteria":
+            else:
                 if random_or_top_N == "Random":
+                   city = city
+                   restaurant_type = restaurant_type
+                   chain_local = chain_local
+                   cuisine_type = cuisine_type
+                   meal_type = meal_type
                    requested_data = restaurant_city_filter(city)
                    requested_data = restaurant_type_filter(requested_data, restaurant_type)
                    requested_data = restaurant_chain_local_filter(requested_data, chain_local)
@@ -167,7 +167,12 @@ def master():
                    master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
-                elif random_or_top_N == "Top N":
+                else:
+                   city = city
+                   restaurant_type = restaurant_type
+                   chain_local = chain_local
+                   cuisine_type = cuisine_type
+                   meal_type = meal_type
                    requested_data = restaurant_city_filter(city)
                    requested_data = restaurant_type_filter(requested_data, restaurant_type)
                    requested_data = restaurant_chain_local_filter(requested_data, chain_local)
@@ -177,7 +182,7 @@ def master():
                    master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].head(top_N)
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
-    except TypeError:
+    except ValueError:
         st.write("Oops! Please make selections via the drop downs if you are choosing to Search based on critera")
 
 master()
