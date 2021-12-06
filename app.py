@@ -173,6 +173,6 @@ def master():
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
     except ValueError:
-        st.write("Oops! Please make selections via the drop downs if you are choosing to Search based on critera")
+        st.write("Oops! Please make selections via the drop downs if you are choosing to Search based on critera")        
 
 master()
