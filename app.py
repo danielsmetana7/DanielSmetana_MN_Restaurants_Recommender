@@ -157,6 +157,11 @@ def master():
                 master_output = requested_data
                 st.write("Below are your results - enjoy!")
                 st.table(master_output)
+            elif bypass_for_random == "Search based on criteria":
+                requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
+                master_output = requested_data
+                st.write("Below are your results - enjoy!")
+                st.table(master_output)
             else:
                 if random_or_top_N == "Random":
                    requested_data = restaurant_city_filter(city)
