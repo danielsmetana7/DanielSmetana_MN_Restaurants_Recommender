@@ -169,7 +169,7 @@ def master():
                    requested_data = restaurant_chain_local_filter(requested_data, chain_local = chain_local)
                    requested_data = restaurant_cusine_type(requested_data, cuisine_type = cuisine_type)
                    requested_data = restaurant_meal_filter(requested_data, meal_type = meal_type)
-                   requested_data = requested_data.sort_values(by = ["Review Stars"], reverse=True)
+                   requested_data = requested_data.sort_values(by = ["Review Stars"], ascending=False)
                    master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].head(top_N)
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
