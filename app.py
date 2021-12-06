@@ -154,30 +154,20 @@ def master():
                 st.table(master_output)
             else:
                 if random_or_top_N == "Random":
-                   city = city
-                   restaurant_type = restaurant_type
-                   chain_local = chain_local
-                   cuisine_type = cuisine_type
-                   meal_type = meal_type
-                   requested_data = restaurant_city_filter(city)
-                   requested_data = restaurant_type_filter(requested_data, restaurant_type)
-                   requested_data = restaurant_chain_local_filter(requested_data, chain_local)
-                   requested_data = restaurant_cusine_type(requested_data, cuisine_type)
-                   requested_data = restaurant_meal_filter(requested_data, meal_type)
+                   requested_data = restaurant_city_filter(requested_data, city=city)
+                   requested_data = restaurant_type_filter(requested_data, restaurant_type = restaurant_type)
+                   requested_data = restaurant_chain_local_filter(requested_data, chain_local = chain_local)
+                   requested_data = restaurant_cusine_type(requested_data, cuisine_type = cuisine_type)
+                   requested_data = restaurant_meal_filter(requested_data, meal_type = meal_type)
                    master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
                 else:
-                   city = city
-                   restaurant_type = restaurant_type
-                   chain_local = chain_local
-                   cuisine_type = cuisine_type
-                   meal_type = meal_type
-                   requested_data = restaurant_city_filter(city)
-                   requested_data = restaurant_type_filter(requested_data, restaurant_type)
-                   requested_data = restaurant_chain_local_filter(requested_data, chain_local)
-                   requested_data = restaurant_cusine_type(requested_data, cuisine_type)
-                   requested_data = restaurant_meal_filter(requested_data, meal_type)
+                   requested_data = restaurant_city_filter(requested_data, city=city)
+                   requested_data = restaurant_type_filter(requested_data, restaurant_type = restaurant_type)
+                   requested_data = restaurant_chain_local_filter(requested_data, chain_local = chain_local)
+                   requested_data = restaurant_cusine_type(requested_data, cuisine_type = cuisine_type)
+                   requested_data = restaurant_meal_filter(requested_data, meal_type = meal_type)
                    requested_data = requested_data.sort_values(by = ["Review Stars"])
                    master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].head(top_N)
                    st.write("Below are your results - enjoy!")
