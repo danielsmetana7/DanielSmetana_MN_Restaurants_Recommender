@@ -147,7 +147,7 @@ def master():
 
     if submit_button:
         if bypass_for_random == "Random":
-            requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant_URL", "Review Stars"]].sample(n = 1)
+            requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
             return requested_data
         else:
             if random_or_top_N == "Random":
