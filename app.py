@@ -12,8 +12,11 @@ st.title("Twin Cities Restaurant Recommender")
 
 st.markdown("This application solves the constant question of where to eat by recommending restaurants to a user based upon their input. \
             Contained within the application are 215 of the Twin Cities' best and most-popular restaurants, making this app sustainable for long-term use without worry of repeats! \
-            Furthermore, the list of restaurants is personally curated, filtering out undesirable spots that online search engines recommend, making this a truly unique app.\
+            Furthermore, the list of restaurants is personally curated, filtering out undesirable spots that online search engines recommend, making this app truly unique.\
             All review stars shown are sourced from Google Reviews.")
+
+st.markdown("Clicking submit below will produce your results and reset the form, allowing you to repeatedly use the application - searching until you find the restaurant thats calling your name.")
+
 
 #Read the business dataset
 mn_restaurant_data = pd.read_csv('TwinCities_Restaurant_Data.csv', encoding = "ISO-8859-1")
