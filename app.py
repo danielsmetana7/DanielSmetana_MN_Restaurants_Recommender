@@ -134,9 +134,9 @@ def restaurant_meal_filter(requested_data, meal_type):
 
 
 #Master function
-requested_data = pd.DataFrame()
 
 def master():
+    requested_data = pd.DataFrame()
     try:
         with st.form(key = "Input your search criteria", clear_on_submit = True):
             bypass_for_random = st.radio("Do you want to search based on specific criteria, or just receive a random restaurant? ", ("Search based on criteria", "Random"))
