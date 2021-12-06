@@ -173,6 +173,6 @@ def master():
                    st.write("Below are your results - enjoy!")
                    st.table(master_output)
     except ValueError:
-        st.write("Oops! No restaurants match your search criteria - please try something new")
+        st.write("Oops! No restaurants match your search criteria - please try different criteria")
 
 master()
