@@ -148,7 +148,9 @@ def master():
     if submit_button:
         if bypass_for_random == "Random":
             requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
-            return requested_data
+            master_output = requested_data
+            st.write("Below are your results - enjoy!")
+            st.table(master_output)
         else:
             if random_or_top_N == "Random":
                requested_data = restaurant_city_filter(city)
