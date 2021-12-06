@@ -139,7 +139,7 @@ def master():
         chain_local = st.selectbox("Please select Chain or Local restaurant: ", ("Chain", "Local", "No Preference"))
         cuisine_type = st.selectbox("Please select the cuisine type: ", ("American", "Asian", "French", "Health", "Italian", "Latin", "Mediterranean", "No Preference"))
         meal_type = st.selectbox("Please select the meal time: ", ("Brunch/Breakfast", "Lunch", "Dinner", "No Preference"))
-        random_or_top_N = st.radio("Do you want to see a random restaurant that meets your criteria, or the top N restaurants (sorted by Google Reviews)? "("Random", "Top N"))
+        random_or_top_N = st.radio("Do you want to see a random restaurant that meets your criteria, or the top N restaurants (sorted by Google Reviews)?", ("Random", "Top N"))
         top_N = st.slider("How many of the top restaurants do you want to see? ", min_value = 1, max_value = 10)
         top_N = int(top_N)
         submit_button = st.form_submit_button("Submit")
