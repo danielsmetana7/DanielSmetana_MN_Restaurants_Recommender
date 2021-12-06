@@ -15,7 +15,7 @@ st.markdown("This application solves the constant question of where to eat by re
             Furthermore, the list of restaurants is personally curated, filtering out undesirable spots that online search engines recommend, making this app truly unique.\
             All review stars shown are sourced from Google Reviews.")
 
-st.markdown("Clicking submit below will produce your results and reset the form, allowing you to repeatedly use the application - searching until you find the restaurant thats calling your name.")
+st.markdown("Clicking submit below will produce your results and reset the form, allowing you to repeatedly use the application - searching until you find the restaurant that is calling your name.")
 
 
 #Read the business dataset
