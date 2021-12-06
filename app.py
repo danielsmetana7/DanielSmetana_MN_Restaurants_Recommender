@@ -134,45 +134,47 @@ def restaurant_meal_filter(requested_data, meal_type):
 requested_data = pd.DataFrame()
 
 def master():
-    with st.form(key = "Input your search criteria", clear_on_submit = True):
-        bypass_for_random = st.radio("Do you want to search based on specific criteria, or just receive a random restaurant? ", ("Search based on criteria", "Random"))
-        city = st.selectbox("Please select the city: ", ("Minneapolis", "St. Paul", "No Preference"))
-        restaurant_type = st.selectbox("Please select the type of restaurant experience: ", ("Fast-Casual", "Casual Sit-Down", "Fancy Sit-Down", "No Preference"))
-        chain_local = st.selectbox("Please select Chain or Local restaurant: ", ("Chain", "Local", "No Preference"))
-        cuisine_type = st.selectbox("Please select the cuisine type: ", ("American", "Asian", "French", "Health", "Italian", "Latin", "Mediterranean", "No Preference"))
-        meal_type = st.selectbox("Please select the meal time: ", ("Brunch/Breakfast", "Lunch", "Dinner", "No Preference"))
-        random_or_top_N = st.radio("Do you want to see a random restaurant that meets your criteria, or the top N restaurants (sorted by Google Reviews)?", ("Random", "Top N"))
-        top_N = st.slider("How many of the top restaurants do you want to see? ", min_value = 1, max_value = 10)
-        top_N = int(top_N)
-        submit_button = st.form_submit_button("Submit")
+    try:
+        with st.form(key = "Input your search criteria", clear_on_submit = True):
+            bypass_for_random = st.radio("Do you want to search based on specific criteria, or just receive a random restaurant? ", ("Search based on criteria", "Random"))
+            city = st.selectbox("Please select the city: ", ("Minneapolis", "St. Paul", "No Preference"))
+            restaurant_type = st.selectbox("Please select the type of restaurant experience: ", ("Fast-Casual", "Casual Sit-Down", "Fancy Sit-Down", "No Preference"))
+            chain_local = st.selectbox("Please select Chain or Local restaurant: ", ("Chain", "Local", "No Preference"))
+            cuisine_type = st.selectbox("Please select the cuisine type: ", ("American", "Asian", "French", "Health", "Italian", "Latin", "Mediterranean", "No Preference"))
+            meal_type = st.selectbox("Please select the meal time: ", ("Brunch/Breakfast", "Lunch", "Dinner", "No Preference"))
+            random_or_top_N = st.radio("Do you want to see a random restaurant that meets your criteria, or the top N restaurants (sorted by Google Reviews)?", ("Random", "Top N"))
+            top_N = st.slider("How many of the top restaurants do you want to see? ", min_value = 1, max_value = 10)
+            top_N = int(top_N)
+            submit_button = st.form_submit_button("Submit")
 
 
-    if submit_button:
-        if bypass_for_random == "Random":
-            requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
-            master_output = requested_data
-            st.write("Below are your results - enjoy!")
-            st.table(master_output)
-        else:
-            if random_or_top_N == "Random":
-               requested_data = restaurant_city_filter(city)
-               requested_data = restaurant_type_filter(requested_data, restaurant_type)
-               requested_data = restaurant_chain_local_filter(requested_data, chain_local)
-               requested_data = restaurant_cusine_type(requested_data, cuisine_type)
-               requested_data = restaurant_meal_filter(requested_data, meal_type)
-               master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
-               st.write("Below are your results - enjoy!")
-               st.table(master_output)
+        if submit_button:
+            if bypass_for_random == "Random":
+                requested_data = mn_restaurant_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
+                master_output = requested_data
+                st.write("Below are your results - enjoy!")
+                st.table(master_output)
             else:
-               requested_data = restaurant_city_filter(city)
-               requested_data = restaurant_type_filter(requested_data, restaurant_type)
-               requested_data = restaurant_chain_local_filter(requested_data, chain_local)
-               requested_data = restaurant_cusine_type(requested_data, cuisine_type)
-               requested_data = restaurant_meal_filter(requested_data, meal_type)
-               requested_data = requested_data.sort_values(by = ["Review Stars"])
-               master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].head(top_N)
-               st.write("Below are your results - enjoy!")
-               st.table(master_output)
-
+                if random_or_top_N == "Random":
+                   requested_data = restaurant_city_filter(city)
+                   requested_data = restaurant_type_filter(requested_data, restaurant_type)
+                   requested_data = restaurant_chain_local_filter(requested_data, chain_local)
+                   requested_data = restaurant_cusine_type(requested_data, cuisine_type)
+                   requested_data = restaurant_meal_filter(requested_data, meal_type)
+                   master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].sample(n = 1)
+                   st.write("Below are your results - enjoy!")
+                   st.table(master_output)
+                else:
+                   requested_data = restaurant_city_filter(city)
+                   requested_data = restaurant_type_filter(requested_data, restaurant_type)
+                   requested_data = restaurant_chain_local_filter(requested_data, chain_local)
+                   requested_data = restaurant_cusine_type(requested_data, cuisine_type)
+                   requested_data = restaurant_meal_filter(requested_data, meal_type)
+                   requested_data = requested_data.sort_values(by = ["Review Stars"])
+                   master_output = requested_data[["Restaurant Name", "Restaurant URL", "Review Stars"]].head(top_N)
+                   st.write("Below are your results - enjoy!")
+                   st.table(master_output)
+    except TypeError:
+        st.write("Oops! Please make selections via the drop down if you are choosing to Search based on critera")
 
 master()
