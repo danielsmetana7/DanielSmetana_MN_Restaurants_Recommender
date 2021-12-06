@@ -9,6 +9,7 @@ import pandas as pd
 import streamlit as st
 
 st.title("Twin Cities Restaurant Recommender")
+st.markdown("Author: Daniel Smetana")
 
 st.markdown("This application solves the constant question of where to eat by recommending restaurants to a user based upon their input. \
             Contained within the application are 215 of the Twin Cities' best and most-popular restaurants, making this app sustainable for long-term use without worry of repeats! \
@@ -137,7 +138,7 @@ def master():
             bypass_for_random = st.radio("Do you want to search based on specific criteria, or just receive a random restaurant? ", ("Search based on criteria", "Random"))
             city = st.selectbox("Please select the city: ", ("Minneapolis", "St. Paul", "No Preference"))
             restaurant_type = st.selectbox("Please select the type of restaurant experience: ", ("Fast-Casual", "Casual Sit-Down", "Fancy Sit-Down", "No Preference"))
-            chain_local = st.selectbox("Please select Chain or Local restaurant: ", ("Chain", "Local", "No Preference"))
+            chain_local = st.selectbox("Please select local or chain restaurant: ", ("Local", "Chain",  "No Preference"))
             cuisine_type = st.selectbox("Please select the cuisine type: ", ("American", "Asian", "French", "Health", "Italian", "Latin", "Mediterranean", "No Preference"))
             meal_type = st.selectbox("Please select the meal time: ", ("Brunch/Breakfast", "Lunch", "Dinner", "No Preference"))
             random_or_top_N = st.radio("Do you want to see a random restaurant that meets your criteria, or the top N restaurants (sorted by Google Reviews)?", ("Random", "Top N"))
