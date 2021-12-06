@@ -20,6 +20,8 @@ mn_restaurant_data = pd.read_csv('TwinCities_Restaurant_Data.csv', encoding = "I
 
 pd.DataFrame(mn_restaurant_data)
 
+
+
 print(mn_restaurant_data.head())
 
 print(list(mn_restaurant_data.columns))
